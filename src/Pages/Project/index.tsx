@@ -42,7 +42,6 @@ class ProjectC extends React.Component<project & RouteComponentProps, project_st
     }
     componentDidMount(){
         this.props.getProjectDesks(this.state.projectParams.projectId);
-        this.props.changeCurrentProject(this.props.projects.findIndex((item: Project) => item.id === this.state.projectParams.projectId));
     }
 
     removeProject(){

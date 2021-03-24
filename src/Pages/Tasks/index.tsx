@@ -58,7 +58,6 @@ class Tasks extends React.Component<tasks, tasks_state> {
     
     componentDidMount(){
         this.props.getTasks(this.props.match.params.deskId, this.props.userId);
-        console.log(this.props)
     }
 
     handleDragEnter(e: DragEvent){
@@ -153,7 +152,7 @@ class Tasks extends React.Component<tasks, tasks_state> {
 const mapStateToProps = (state: State) => {
     return {
         tasks: state.tasks.tasks,
-        userId: state.user.user.id,
+        userId: state.user.user?.id,
         loading: state.tasks.loading
     }
 }

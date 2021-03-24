@@ -5,6 +5,7 @@ import { User } from "./user";
 
 export interface State {
     main: {
+        projectLoaded: boolean,
         currentProject: number
     },
     projects: {

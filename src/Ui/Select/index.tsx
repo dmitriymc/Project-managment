@@ -49,7 +49,7 @@ export const Select: React.FunctionComponent<selectProps> = (props) => {
     
 
     return(
-        <div className="select">
+        <div className="select" onBlur={() => setActive(false)}>
             <div className="select-field" onClick={() => setActive(!active)}>
                 <input name={props.name} placeholder={props.placeholder} value={value['id' || props.optionName]} className="select-input" readOnly={!props.search || true} autoComplete="off" ref={props.register}></input>
                 {value && <div className="select-field__content">
@@ -59,7 +59,7 @@ export const Select: React.FunctionComponent<selectProps> = (props) => {
             {active && <div className="select-items">
                 {props.items.map((item, index) => 
                     
-                    <div onClick={() => select(item)} key={index} className="select-items__item">
+                    <div onMouseDown={() => select(item)} key={index} className="select-items__item">
                         {item.color && <div className={`item-circle ${item.color}`}></div>}{item.name}
                     </div>
                     

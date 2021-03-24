@@ -6,6 +6,7 @@ import { User } from "../Interfaces/user";
 
 export enum actionsTypes {
 
+    PROJECT_LOADED = "PROJECT_LOADED",
     CURRENT_PROJECT = "CURRENT_PROJECT",
 
     GET_PROJECTS = "GET_PROJECTS",
@@ -49,6 +50,10 @@ export enum actionsTypes {
     EDIT_CARD_RECEIVED = "EDIT_CARD_RECEIVED"
 
 
+}
+
+export interface ProjectLoaded {
+    type: typeof actionsTypes.PROJECT_LOADED
 }
 
 export interface CurrentProject {
@@ -211,7 +216,7 @@ export interface EditCardReceived {
     json: Card
 }
 
-export type AppActions = CurrentProject | GetProjectsAction | ProjectsReceived | 
+export type AppActions = ProjectLoaded | CurrentProject | GetProjectsAction | ProjectsReceived | 
 AddProjectAction | AddProjectReceived | GetProjectDesks | RemoveProject | 
 ProjectDesksReceived | UserLogin | UserLoginReceived | ProjectDeskRemoved | ProjectDesksRemoved | UserLogout | GetUser |
 GetUsers | GetUsersReceived | AddUser | AddUserReceived | RemoveUser | GetTasks |

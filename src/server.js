@@ -219,6 +219,20 @@ export function server({ environment = "test" } = {}){
                         status: 1,
                         title: "Project card",
                         userId: 1
+                    },
+                    {
+                        id: 6,
+                        content: "Test user 2",
+                        date: "2021-01-01T00:00:00Z",
+                        deskId: 1,
+                        order: 6,
+                        position: 0,
+                        priority: 0,
+                        projectId: 2,
+                        type: 1,
+                        status: 1,
+                        title: "Project card",
+                        userId: 2
                     }
                 ],
                 users: [
@@ -296,7 +310,8 @@ export function server({ environment = "test" } = {}){
             this.get("/tasks", (schema, request) => {
                 const deskId = request.queryParams.deskId;
                 const userId = request.queryParams.userId;
-                return schema.db.cards.where({deskId: deskId}, {userId: userId})
+                console.log(userId)
+                return schema.db.cards.where({deskId: deskId, userId: userId})
             })
 
             this.post("/tasks", (schema, request) => {
@@ -385,7 +400,7 @@ export function server({ environment = "test" } = {}){
 
             this.post("/login/authenticate", (schema, request) => {
                 const json = JSON.parse(request.requestBody)
-                const user = schema.db.users.findBy({login: json.login},{password: json.password});
+                const user = schema.db.users.findBy({login: json.login, password: json.password});
                 if(user){
                     return user;
                 }else{

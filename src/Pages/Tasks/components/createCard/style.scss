@@ -1,0 +1,34 @@
+.createCard-container {
+    background-color: rgba(15, 15, 15, 0.85);
+    padding: 25px;
+
+    form{
+        display: flex;
+
+        input {
+            width: 100%;
+            box-sizing: border-box;
+        }
+    }
+
+    &__left {
+        width: 70%;
+        padding: 25px;
+        margin-right: 25px;
+        border-right: 1px solid rgb(255 255 255 / 10%);
+    }
+
+    &__right {
+        width: 30%;
+        padding: 25px;
+    }
+
+    &__input {
+        text-align: left;
+    }
+
+    &__button {
+        margin-top: 35px;
+    }
+
+}

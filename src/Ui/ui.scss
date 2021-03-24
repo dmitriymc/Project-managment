@@ -1,0 +1,67 @@
+// colors 
+
+// link
+
+a {
+    text-decoration: none;
+}
+
+// buttons
+
+button {
+    padding: 14px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: "Roboto";
+    font-weight: 100;
+    color: #fff;
+    transition: 0.25s;
+    background: transparent;
+
+    
+}
+
+// inputs
+
+input {
+    background: none;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgb(255, 255, 255, 0.25);
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    font-weight: 100;
+    font-family: 'Roboto';
+    padding: 10px;
+    transition: 0.25s;
+
+    &:focus {
+        border-color: rgba(255, 255, 255, 1);
+    }
+}
+
+// labels
+
+label {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+// priority
+
+.low{
+    background-color: #efff00;
+}
+
+.medium {
+    background-color: #ff701d;
+}
+
+.hight {
+    background-color: #6eff00;
+}

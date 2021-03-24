@@ -1,0 +1,61 @@
+.cardPage {
+    width: 75%;
+    margin: 0 auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.cardPage-container {
+    &__form {
+        display: flex;
+    }
+
+    &__left {
+        width: 70%;
+        padding: 25px;
+    }
+
+    &__right {
+        width: 30%;
+        padding: 25px;
+    }
+
+    label {
+        display: flex;
+    }
+
+    #description {
+        width: 100%;
+        padding: 10px 0;
+        display: flex;
+        flex-direction: column;
+        word-break: break-word;
+        background: none;
+        outline: none;
+        color: #fff;
+        transition: 0.25s;
+
+        &:focus {
+            min-height: 75px;
+            background-color: rgb(255 255 255 / 5%);
+            padding: 10px;
+        }
+    }
+}
+
+.cardPage-info {
+
+    &__user {
+        padding: 10px;
+        color: #fff;
+    }
+
+    &__date {
+        color: #d9d9d9;
+        padding: 10px;
+        text-align: center;
+    }
+
+    &__button {
+        margin-top:25px;
+    }
+}

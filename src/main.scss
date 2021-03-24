@@ -1,0 +1,128 @@
+.container {
+    width: 100%;
+}
+
+.main {
+    height: 90vh;
+    background-color: rgba(0,0,0,0.5);
+    box-sizing: border-box;
+
+    &--start {
+        height: 95vh;
+    }
+
+}
+
+.page {
+    padding: 5vh 100px;
+    height: 80vh;
+    align-items: center;
+}
+
+.f-page {
+    display: flex;
+
+    &--center{
+        justify-content: center;
+    }
+}
+
+.page-bg{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index: -1;
+    background-size: auto;
+    background-position: left;
+    filter: brightness(0.75);
+    transform: scale(1.15);
+    transition: 0.5s;
+}
+
+.page-header {
+
+    display: flex;
+    justify-content: center;
+    height: 5vh;
+
+    &__title {
+        width: 65%;
+        text-align: center;
+        text-transform: uppercase;
+        position: absolute;
+        color: #fff;
+        letter-spacing: 15px;
+    }
+
+    &__editable {
+        
+        transition: 0.25s;
+
+
+        &:hover {
+            background-color: rgba(0,0,0,0.5);
+            border-bottom: 1px solid #fff;
+        }
+
+        &:focus {
+            outline: none;
+            background-color: rgba(255,255,255,0.05);
+        }
+    }
+
+    &__button {
+        &--left{
+            margin-right: auto;
+        }
+
+        &--right{
+            margin-left: auto;
+        }
+    }
+
+}
+
+.page-content {
+    align-items: center;
+    height: 70vh;
+    margin-top: 50px;
+
+    &--center {
+        display: flex;
+        margin: 0;
+    }
+}
+
+.button {
+    width: 100%;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 1);
+        color: #000;
+    }
+}
+
+.h-button{
+    &--left{
+        margin-right: auto;
+        margin-left: 0;
+    }
+}
+
+.page-title{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.empty-title{
+    text-transform: uppercase;
+    color: #fff;
+}
+
+h2{
+    color:#fff;
+    width: 100%;
+    text-align: center;
+}

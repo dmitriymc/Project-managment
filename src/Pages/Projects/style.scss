@@ -1,0 +1,100 @@
+.projects {
+    display: flex;
+    height: 600px;
+    margin: 0 auto;
+    width: 900px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    transition: transform 0.5s;
+
+    &--hidden{
+        transform: scale(0.5) translateY(0vh);
+    }
+}
+
+.projects-container {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    transition: 0.5s;
+}
+
+.projects-item {
+    width: 900px;
+    height: 600px;
+    background-size: 100%;
+    transform: scale(0.75);
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.5s;
+    color: #fff;
+
+    &--active{
+        transform: scale(1);
+
+        &:hover {
+            opacity: 0.85;
+        }
+    }
+
+    &--active:hover &__status{
+        opacity: 1;
+    }
+
+    &__title{
+        display: flex;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: 50px;
+        font-weight: 100;
+        text-transform: uppercase;
+        letter-spacing: 1em;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    &__status {
+        position: absolute;
+        bottom: 25px;
+        left: 50px;
+        font-weight: 100;
+        letter-spacing: 0.5em;
+        opacity: 0;
+        transition: 0.5s;
+    }
+
+    &--active &__title{
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.25s;
+    }
+}
+
+.project-link{
+    color: #fff;
+    text-decoration: none;
+    word-break: break-word;
+}
+
+// ANIMATION
+
+  .fade-enter {
+    opacity: 0.01;
+  }
+  
+  .fade-enter.fade-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+  }
+  
+  .fade-exit{
+    opacity: 1;
+  }
+  
+  .fade-exit-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+  }

@@ -1,0 +1,34 @@
+.createUser-container{
+    display: flex;
+
+    &__left {
+        position: relative;
+        width: 50%;
+    }
+
+    &__right {
+        padding: 25px;
+        width: 50%;
+    }
+
+    &__item {
+        margin-bottom: 15px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__input {
+        width: 100%;
+        text-align: left;
+    }
+}
+
+.upload-avatar{
+    height: 100%!important;
+
+    &__span{
+        padding-top: 0!important;
+    }
+}

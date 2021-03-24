@@ -1,0 +1,118 @@
+.cards {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    transition: 0.25s;
+    
+    &--hidden {
+        opacity: 0.05;
+        overflow: hidden;
+        pointer-events: none;
+        user-select: none;
+    }
+}
+
+.cards-field {
+
+    width: 33.33333%;
+    padding: 0 25px;
+    border-right: 1px solid rgba(255,255,255, 0.15);
+
+    &:first-child {
+        padding-left: 0;
+    }
+
+    &:last-child {
+        border: none;
+        padding-right: 0;
+    }
+
+    &__title {
+        padding: 25px 0;
+        color: #fff;
+        font-size: 24px;
+        font-weight: 300;
+        text-transform: uppercase;
+    }
+
+    &__content {
+        min-height: 100%;
+        padding: 10px;
+        transition: background-color 0.25s;
+
+        &:hover {
+            background-color: rgba(255,255,255,0.05);
+        }
+
+        &--active{
+            background-color: rgba(255,255,255,0.5);
+        }
+    }
+}
+
+.card {
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: rgba(255,255,255, 0.75);
+    cursor: pointer;
+    user-select: none;
+    transition: 0.25s;
+
+    &:hover {
+        background-color: rgba(255,255,255,0.5);
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    &__title{
+        font-weight: 600;
+
+        &--complete {
+            text-decoration: line-through;
+        }
+    }
+
+    &__link {
+        color: #000;
+        transition: opacity 0.5s, color 0.25s;
+        
+        &:hover{
+            opacity: 0.75;
+            color: #2e2e2e;
+        }
+    }
+
+    &__priority {
+        width: 10px;
+        height: 10px;
+        margin-left: 15px;
+        border-radius: 100%;
+    }
+
+    &__type {
+        margin-left: auto;
+        padding: 0px 2px;
+        color: #757575;
+    }
+
+    &--active {
+        & > div{
+            transition: 0.25s;
+            opacity: 0;
+        }
+
+        background: rgba(255,255,255, 0.15)!important;
+        
+    }
+
+    
+
+}

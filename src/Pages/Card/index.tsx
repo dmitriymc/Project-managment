@@ -37,7 +37,7 @@ const CardComponent: React.FunctionComponent<card> = (props) => {
         const { register, setValue, handleSubmit, errors} = useForm();
 
         useEffect(() => {
-            props.getCard(props.match.params.cardId);
+            props.getCard(props.match.params.cardId); 
         }, [])
 
         const removeCard = () => {

@@ -310,7 +310,7 @@ export function server({ environment = "test" } = {}){
             this.get("/tasks", (schema, request) => {
                 const deskId = request.queryParams.deskId;
                 const userId = request.queryParams.userId;
-                console.log(userId)
+                console.log(schema.db.cards)
                 return schema.db.cards.where({deskId: deskId, userId: userId})
             })
 
@@ -328,7 +328,7 @@ export function server({ environment = "test" } = {}){
 
             this.get("/tasks/:id", (schema, request) => {
                 const cardId = request.params.id;
-                console.log(cardId)
+                console.log(schema.db.cards)
                 return schema.db.cards.find(cardId)
             })
 

@@ -3,12 +3,12 @@ import { AppActions } from "../constants/actionsTypes";
 import { Card } from "../Interfaces/card";
 
 interface initialTasks {
-   card: Card | {},
+   card: Card | null,
    loading: boolean
 }
 
 const initialState: initialTasks = {
-    card: {},
+    card: null,
     loading: true
 }
 

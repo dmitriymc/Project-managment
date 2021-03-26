@@ -27,58 +27,19 @@ interface projects {
     loading: boolean;
 }
 
-/*interface projects_state {
-    cProject: number;
-    createProject: boolean;
-}*/
-
 const Projects: React.FunctionComponent<projects> = (props: projects) => {
 
-    /*constructor(props: projects){
-        super(props);
-        this.moveProjects = this.moveProjects.bind(this)
-    }*/
-
-    /*state = {
-        cProject: this.props.currentProject,
-        createProject: false
-    }*/
-
-    const [cProject, setProject] = useState(props.currentProject);
     const [createProject, setCreateProject] = useState(false);
 
-    let currentProjectPos = cProject;
-
-    const moveProjects = (e: KeyboardEvent) => {
-        if((e.key === "ArrowLeft" || e.key === "ArrowDown") && currentProjectPos > 0){
-            currentProjectPos -= 1; 
-        }else if((e.key === "ArrowRight" || e.key === "ArrowUp") && + currentProjectPos < props.projects.length - 1){
-            currentProjectPos += 1; 
-        }
-        props.changeCurrentProject(currentProjectPos); 
-        setProject(currentProjectPos)
+    const itemClick = (index: number) => {   
+        props.changeCurrentProject(index);        
     }
-
-    const itemClick = (index: number) => {        
-        setProject(index)
-        props.changeCurrentProject(index);
-    }
-
-    useEffect(() => {
-        document.addEventListener('keydown', moveProjects)
-
-        return () => {
-            document.removeEventListener('keydown', moveProjects);
-        }
-
-    },[])
 
     const addProject = () => setCreateProject(!createProject);
 
     const createNewProject = (item: Project) => {
         props.addProject(item);
         props.changeCurrentProject(props.projects.length);
-        setProject(props.projects.length)
         addProject();
     }    
 
@@ -91,11 +52,11 @@ const Projects: React.FunctionComponent<projects> = (props: projects) => {
                    {createProject && <CreateProject createProject={createNewProject} />}
                    <div className={`projects ${ createProject ? 'projects--hidden' : ''}`}>
                    {
-                   props.loading ? <Preloader/> : ( props.projects.length ? <div className="projects-container" style={{transform: `${'translateX'}(-${cProject * (100/props.projects.length)}%)`}}>
+                   props.loading ? <Preloader/> : ( props.projects.length ? <div className="projects-container" style={{transform: `${'translateX'}(-${props.currentProject * (100/props.projects.length)}%)`}}>
                         
                         {props.projects.map((project, index) => 
 
-                                <div key={project.id} style={project.image ? {backgroundImage: `url(${project.image})`} : {backgroundColor: '#a1a1a1'}} className={`projects-item ${ index == cProject ? 'projects-item--active' : ''}`} onClick={() => itemClick(+index)}>
+                                <div key={project.id} style={project.image ? {backgroundImage: `url(${project.image})`} : {backgroundColor: '#a1a1a1'}} className={`projects-item ${ index == props.currentProject ? 'projects-item--active' : ''}`} onClick={() => itemClick(+index)}>
                                     <div className="projects-item__title"><Link className="project-link" to={`project/${project.id}`}>{project.title}</Link></div>
                                     <div className="projects-item__status">{projectState[project.state]}</div>
                                 </div>

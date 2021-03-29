@@ -21,7 +21,13 @@ function* editCard(action: any){
 
     const json = yield fetch(`/api/tasks/${action.json.id}`, requestOptions).then(response => response.json())
     console.log(json);
-    yield put({type: "EDIT_CARD_RECEIVED", json: json})
+    yield all([
+        put({type: "EDIT_CARD_RECEIVED", json: json}),
+        put({type:"ACTION", json:{
+            status: 1,
+            title: `CARD ${action.json.id} EDITED`
+            }})
+    ])
 }
 
 function* actionCardWatcher() {

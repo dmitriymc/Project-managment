@@ -63,4 +63,9 @@
         font-weight: 100;
         color: rgba(255, 255, 255, 0.75);
     }
+
+    &--empty {
+        color: #fff;
+        background: none;
+    }
 }

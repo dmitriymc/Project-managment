@@ -1,4 +1,5 @@
 import { Task } from "redux-saga";
+import { Alert } from "../Interfaces/alert";
 import { Card } from "../Interfaces/card";
 import { Project } from "../Interfaces/project"
 import { ProjectDesk, ProjectDeskResult } from "../Interfaces/projectDesk";
@@ -33,6 +34,8 @@ export enum actionsTypes {
     USERS_RECEIVED = "USERS_RECEIVED",
     ADD_USER = "ADD_USER",
     ADD_USER_RECEIVED = "ADD_USER_RECEIVED",
+    UPDATE_USER = "UPDATE_USER",
+    UPDATE_USER_RECEIVED = "UPDATE_USER_RECEIVED",
     REMOVE_USER = "REMOVE_USER",
 
     GET_TASKS = "GET_TASKS",
@@ -47,7 +50,9 @@ export enum actionsTypes {
     GET_CARD = "GET_CARD",
     CARD_RECEIVED = "CARD_RECEIVED",
     EDIT_CARD = "EDIT_CARD",
-    EDIT_CARD_RECEIVED = "EDIT_CARD_RECEIVED"
+    EDIT_CARD_RECEIVED = "EDIT_CARD_RECEIVED",
+
+    ACTION = "ACTION"
 
 
 }
@@ -137,6 +142,16 @@ export interface AddUser {
     json: User
 }
 
+export interface UpdateUser {
+    type: typeof actionsTypes.UPDATE_USER,
+    json: User
+}
+
+export interface UpdateUserReceived {
+    type: typeof actionsTypes.UPDATE_USER_RECEIVED,
+    json: User
+}
+
 export interface AddUserReceived {
     type: typeof actionsTypes.ADD_USER_RECEIVED,
     json: User
@@ -216,9 +231,14 @@ export interface EditCardReceived {
     json: Card
 }
 
+export interface ActionAlert {
+    type: typeof actionsTypes.ACTION,
+    json: Alert
+}
+
 export type AppActions = ProjectLoaded | CurrentProject | GetProjectsAction | ProjectsReceived | 
 AddProjectAction | AddProjectReceived | GetProjectDesks | RemoveProject | 
 ProjectDesksReceived | UserLogin | UserLoginReceived | ProjectDeskRemoved | ProjectDesksRemoved | UserLogout | GetUser |
-GetUsers | GetUsersReceived | AddUser | AddUserReceived | RemoveUser | GetTasks |
+GetUsers | GetUsersReceived | AddUser | AddUserReceived | UpdateUser | UpdateUserReceived | RemoveUser | GetTasks |
 TasksReceived | AddTask | AddTaskReceived | RemoveCard | RemoveCardReceived | ChangeCardPosition | ChangeCardPositionReceived |
-GetCard | CardReceived | EditCard | EditCardReceived
+GetCard | CardReceived | EditCard | EditCardReceived | ActionAlert

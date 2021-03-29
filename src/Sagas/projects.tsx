@@ -15,8 +15,13 @@ function* addProject(project: any){
         body: JSON.stringify(project.item)
     };
         const project_add = yield fetch("/api/projects", requestOptions).then(response => response.json())
-        yield put({type: "ADD_PROJECT_RECEIVED", item: project_add})
-     
+        yield all([
+            put({type: "ADD_PROJECT_RECEIVED", item: project_add}),
+            put({type:"ACTION", json:{
+                status: 1,
+                title: 'NEW PROJECT CREATED'
+                }})
+        ]) 
 }
 
 function* removeProject(action: any){
@@ -26,6 +31,10 @@ function* removeProject(action: any){
         body: JSON.stringify(action.id)
     }
     const json = yield fetch(`/api/projects/`, requestOptions).then(response => response)
+    yield put({type:"ACTION", json:{
+        status: 1,
+        title: `PROJECT ${action.id} REMOVED`
+        }})
 }
 
 function* actionProjectsWatcher() {

@@ -33,6 +33,11 @@ button:focus{
   outline: none;
 }
 
+fieldset {
+  padding: 0;
+  border: none;
+}
+
 .App {
   font-family: 'Roboto', sans-serif;
   width: 100vw;

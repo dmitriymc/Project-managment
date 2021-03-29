@@ -27,7 +27,11 @@ export const usersReducer = (state = initialState, action: AppActions) => {
             break;  
         case 'ADD_USER_RECEIVED':
             return {...state, users: [...state.users, action.json]};
-            break;    
+            break;
+        case 'UPDATE_USER':
+            return {...state}
+        case 'UPDATE_USER_RECEIVED':
+            return {}
         default:
             return state
     }

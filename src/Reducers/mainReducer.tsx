@@ -1,13 +1,16 @@
 import { AppActions } from "../constants/actionsTypes";
+import { Alert } from "../Interfaces/alert";
 
 interface initialProject {
     currentProject: number | string,
-    projectLoaded: boolean
+    projectLoaded: boolean,
+    actions: Alert[]
 }
 
 const initialProject: initialProject = {
     currentProject: 0,
-    projectLoaded: false
+    projectLoaded: false,
+    actions: []
 }
 
 export const mainReducer = (state = initialProject, action: AppActions) => {
@@ -17,7 +20,9 @@ export const mainReducer = (state = initialProject, action: AppActions) => {
             break;
         case 'PROJECT_LOADED':
             return {...state, projectLoaded: true}
-            break;    
+            break;
+        case 'ACTION':
+            return {...state, actions: [...state.actions, action.json]}      
         default:
             return state    
     }

@@ -26,7 +26,7 @@ export const UserInfo: React.FunctionComponent = () => {
         </div>
         <div className="userInfo-menu">
             <ul>
-                <li><a className="userInfo-link">Profile</a></li>
+                <li><Link className="userInfo-link" to={`/users/${userInfo.id}`}>Profile</Link></li>
                 <li><a className="userInfo-link" onClick={() => logout()}>Logout</a></li>
             </ul>
         </div>

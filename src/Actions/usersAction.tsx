@@ -21,6 +21,11 @@ export const newUserReceived = (user: User): AppActions => ({
     json: user
 })
 
+export const updateUser = (user: User): AppActions => ({
+    type: actionsTypes.UPDATE_USER,
+    json: user
+})
+
 export const removeUser = (id: number): AppActions => ({
     type: actionsTypes.REMOVE_USER
 })

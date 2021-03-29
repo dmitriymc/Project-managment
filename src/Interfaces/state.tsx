@@ -1,3 +1,4 @@
+import { Alert } from "./alert";
 import { Card } from "./card";
 import { Project } from "./project";
 import { ProjectDeskResult } from "./projectDesk";
@@ -6,7 +7,8 @@ import { User } from "./user";
 export interface State {
     main: {
         projectLoaded: boolean,
-        currentProject: number
+        currentProject: number,
+        actions: Alert[]
     },
     projects: {
         projects: Project[],

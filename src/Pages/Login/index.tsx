@@ -42,12 +42,12 @@ const Login: React.FunctionComponent<login> = (props: any) => {
                     </div>
                     <div className="createUser__item">
                         <input autoComplete="off" placeholder="Enter login" name="login" ref={register({required: true})} />
-                        <span className="createUser__error">{errors.login && 'Field is required'}</span>
+                        {errors.login && <span className="createUser__error">Field is required</span>}
                         
                     </div>
                     <div className="createUser__item">
                         <input autoComplete="off" placeholder="Enter password" name="password" ref={register({required: true})} />
-                        <span className="createUser__error">{errors.password && 'Field is required'}</span>
+                        {errors.password && <span className="createUser__error">Field is required</span>}
                     </div>
                     <div className="createUser__item">
                         <button className="button" type="submit">Login</button>

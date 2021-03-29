@@ -10,6 +10,7 @@ import { Preloader } from '../../Ui/Preloader';
 import { rolesList } from '../../constants/rolesList';
 import './style.scss'
 import { State } from '../../Interfaces/state';
+import { Link } from 'react-router-dom';
 
 type users = {
     newUser: Function,
@@ -35,7 +36,7 @@ class Users extends React.Component<users> {
             <PerfectScrollbar>
             <div className="page">
                     <div className="page-header">
-                    <Button className={'page-header__button--left'} align="left" title="To projects" type="large" img={'<i class="fas fa-chevron-left"></i>'} onClick={this.props.history.goBack} />
+                    <Button className={'page-header__button--left'} align="left" title="To projects" type="large" img={'<i class="fas fa-chevron-left"></i>'} onClick={() => this.props.history.push('/')} />
                         <div className="page-header__title">
                             <h2 className="page-title">Users</h2>
                         </div> 
@@ -49,17 +50,17 @@ class Users extends React.Component<users> {
                                        <div className="users-department__title">{role.name}</div>
                                        <div className="users-department__container">
                                            {
-                                               this.props.users.map((user, index) => 
+                                               this.props.users.length ? this.props.users.map((user, index) => 
                                                 
-                                                user.role == role.id && <div className="user" key={index}>
+                                                user.role == role.id && <Link className="user" key={index} to={`users/${user.id}`}>
                                                     <div className="user__avatar">{user.avatar && <img className="user__img" src={user.avatar} />}</div>
                                                     <div className="user__info">
                                                         <div className="user__name">{user.name}</div>
                                                         <div className="user__position">{rolesList[user.role].name}</div>
                                                     </div>
-                                                </div>
+                                                </Link>
 
-                                                )
+                                                ) : <div className="user--empty">-----</div>
                                            }
                                        </div>
                                     </div>

@@ -69,27 +69,26 @@ export const CreateUser: React.FunctionComponent<createUser> = (props) => {
                 
                     <div className="createUser-container__item">
                         <input className="input createUser-container__input" autoComplete="off" placeholder="Enter login" name="login" ref={register({required: true})} />
-                        {errors.login && 'Field is required'}
+                        {errors.login && <span className="createUser-container__error">Field is required</span>}
                     </div>
                     <div className="createUser-container__item">
                         <input className="input createUser-container__input" autoComplete="off" placeholder="Enter name" name="name" ref={register({required: true})} />
-                        {errors.name && 'Field is required'}
+                        {errors.name && <span className="createUser-container__error">Field is required</span>}
                     </div>
                     <div className="createUser-container__item">
                         <input className="input createUser-container__input" autoComplete="off" placeholder="Enter email" name="email" ref={register({required: true})} />
-                        {errors.email && 'Field is required'}
+                        {errors.email && <span className="createUser-container__error">Field is required</span>}
                     </div>
                     <div className="createUser-container__item">
                         <input className="input createUser-container__input" autoComplete="off" placeholder="Enter password" name="password" ref={register({required: true, minLength: 8})} />
-                        {errors.password && 'Field is required'}
+                        {errors.password && <span className="createUser-container__error">Field is required</span>}
                     </div>
                     <div className="createUser-container__item">
                         <input className="input createUser-container__input" autoComplete="off" placeholder="Repeat password" name="r_password" ref={register({required: true, validate: value => value === password.current || 'ERROR'})} />
-                        {errors.r_password && <p>{errors.r_password.message}</p>}
                     </div>
                     <div className="createUser-container__item">
                         <Select items={rolesList} default={0} name="role" register={register({required: true})} placeholder={'user role'} />
-                        {errors.role && 'Field is required'}
+                        {errors.role && <span className="createUser-container__error">Field is required</span>}
                     </div>
                     <div className="createUser-container__item">
                         <button className="button" type="submit">Create</button>

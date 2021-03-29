@@ -12,7 +12,13 @@ function* addUser(user: any) {
     };
     console.log('USER ADD');
     const json = yield fetch(`/api/users`, requestOptions).then(response => response.json())
-    yield put({type:"ADD_USER_RECEIVED", json: json})
+    yield all([
+        put({type:"ADD_USER_RECEIVED", json: json}),
+        put({type:"ACTION", json:{
+            status: 1,
+            title: 'NEW USER ADDED'
+            }})
+    ])
 }
 
 function* getUsers(){
@@ -20,11 +26,26 @@ function* getUsers(){
     yield put({type: "USERS_RECEIVED", json: json})
 }
 
+function* updateUser(user: any){
+    const requestOptions = {
+        method: 'PUT',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(user.json)
+    }
+    const json = yield fetch(`/api/users/${user.json.id}`, requestOptions).then(response => response.json())
+    yield all([
+        put({type: "UPDATE_USER_RECEIVED", json: json}),
+        put({type:"ACTION", json:{
+            status: 1,
+            title: 'USER UPDATED'
+            }})
+    ])
+}
+
 function* actionUsersWatcher() {
     yield takeEvery("ADD_USER", addUser)
     yield takeEvery("GET_USERS", getUsers);
-    // yield takeLatest("ADD_PROJECT", addProject)
-
+    yield takeEvery("UPDATE_USER", updateUser);
 }
 
 export default function* rootSaga(){

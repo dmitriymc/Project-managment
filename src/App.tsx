@@ -19,6 +19,7 @@ import './main.scss';
 import './Ui/ui.scss';
 import { Preloader } from './Ui/Preloader';
 import { Project } from './Interfaces/project';
+import { AlertsComponent } from './Ui/Alerts';
 
 // todo props type
 
@@ -70,8 +71,9 @@ const App: React.FunctionComponent = (props: any) =>  {
             <Route component={Npage}></Route>
           </Switch>
       </div>
-      
+      <AlertsComponent alerts={props.actions} />
       <Footer />
+      
       </div>
 </div>
   )
@@ -86,7 +88,8 @@ const mapStateToProps = (state: State) => {
       projectReady: state.main.projectLoaded,
       loading: state.projectDesks.loading,
       user: state.user.user,
-      isLogin: state.user.isLogin
+      isLogin: state.user.isLogin,
+      actions: state.main.actions
   }
 }
 

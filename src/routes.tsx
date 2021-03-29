@@ -5,6 +5,7 @@ import Users from "./Pages/Users";
 import Login from "./Pages/Login";
 import Tasks from "./Pages/Tasks";
 import CardComponent from "./Pages/Card";
+import Profile from "./Pages/User";
 
 export const Routes = [
     {
@@ -23,6 +24,11 @@ export const Routes = [
       path: '/users',
       component: Users,
       menu: true
+    },
+    {
+      name: 'Profile',
+      path: '/users/:userId',
+      component: Profile,
     },
     {
       name: 'Tasks',

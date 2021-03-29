@@ -10,15 +10,19 @@ function* loginUser(user: any) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(user.json)
     };
-    const json = yield fetch(`/api/login/authenticate`, requestOptions).then(response => response.json(), )
-    console.log(json);
-    if(!json.errors){
-        yield put({type:"USER_LOGIN_RECEIVED", json: json})
+    const json = yield fetch(`/api/login/authenticate`, requestOptions).then(response => response.json())
+
+    if(!json.error){
         localStorage.setItem('id', json.id);
+        yield all([
+            put({type:"USER_LOGIN_RECEIVED", json: json}),
+            put({type:"ACTION", json:{
+                status: 1,
+                title: 'LOGIN SUCCESS'
+                }})
+        ])
     }else{
-        json.errors.forEach((error : string) => {
-            console.log(error);
-        })
+        yield put({type:"ACTION", json: json.error})
     }
     
 }
@@ -26,7 +30,7 @@ function* loginUser(user: any) {
 function* getUser(){
     const token = localStorage.getItem('id');
     // const json = yield fetch('/api/login', requestOptions).then(response => response.json(), )
-    const json = yield fetch(`/api/login/?id=${token}`).then(response => response.json(), )
+    const json = yield fetch(`/api/login/?id=${token}`).then(response => response.json())
     yield put({type: "USER_LOGIN_RECEIVED", json: json})
 }
 

@@ -404,7 +404,10 @@ export function server({ environment = "test" } = {}){
                 if(user){
                     return user;
                 }else{
-                    return new Response(400, { some: 'header' }, { errors: [ 'Incorrect login or password'] });
+                    return new Response(400, { some: 'header' }, { error: {
+                        status: 0,
+                        title: 'Incorrect login or password'
+                    } });
                 }
             })
 
@@ -431,6 +434,12 @@ export function server({ environment = "test" } = {}){
                     online: false
                 }
                 return schema.db.users.insert(user)
+            })
+
+            this.put("/users/:userId", (schema, request) => {
+                const userId = request.params.userId;
+                const content = JSON.parse(request.requestBody);
+                return schema.db.users.update(userId, content);
             })
 
         }

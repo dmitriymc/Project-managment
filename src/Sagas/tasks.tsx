@@ -15,7 +15,13 @@ function* addTask(action: any) {
         body: JSON.stringify(action.json)
     }
     const json = yield fetch('/api/tasks', requestOptions).then(response => response.json())
-    yield put({type: "ADD_TASK_RECEIVED", json: json})
+    yield all([
+        put({type: "ADD_TASK_RECEIVED", json: json}),
+        put({type:"ACTION", json:{
+            status: 1,
+            title: `NEW TASK ADDED`
+            }})
+    ])
 }
 
 function* changeTask(action: any){
@@ -37,7 +43,13 @@ function* removeCard(action: any){
         body: JSON.stringify(action.id)
     }
     const json = yield fetch(`/api/tasks/`, requestOptions).then(response => response)
-    yield put({type: "REMOVE_CARD_RECEIVED", id: action.id})
+    yield all([
+        put({type: "REMOVE_CARD_RECEIVED", id: action.id}),
+        put({type:"ACTION", json:{
+            status: 1,
+            title: `TASK REMOVED`
+            }})
+    ])
 }
 
 function* actionTasksWatcher() {
@@ -45,8 +57,6 @@ function* actionTasksWatcher() {
     yield takeEvery("CHANGE_CARD_POSITION", changeTask)
     yield takeLatest("ADD_TASK", addTask)
     yield takeEvery("REMOVE_CARD", removeCard)
-    // yield takeLatest("ADD_PROJECT", addProject)
-
 }
 
 export default function* rootSaga(){

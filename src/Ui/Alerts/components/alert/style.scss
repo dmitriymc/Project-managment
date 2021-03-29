@@ -1,0 +1,47 @@
+.alerts-item {
+    position: relative;
+    width: 100%;
+    white-space: pre;
+    overflow: hidden;
+    margin-left: auto;
+    margin-bottom: 5px;
+    color: #fff;
+
+    &__title {
+        display: flex;
+        padding: 15px;
+    }
+
+    &--hidden {
+        animation: alert 1s forwards ease-in;
+    }
+
+    &--success {
+        background-color: #4fc115;
+    }
+
+    &--error {
+        background-color: #ff5951;
+    }
+}
+
+@keyframes alert {
+    0% {
+        width: 100%;
+        
+    }
+
+    95% {
+        width: 0;
+        height: 100%;
+        margin-bottom: 5px;
+        visibility: visible;
+    }
+
+    100% {
+        width: 0;
+        height: 0;
+        visibility: hidden;
+        margin-bottom: 0;
+    }
+}

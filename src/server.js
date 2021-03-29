@@ -437,6 +437,7 @@ export function server({ environment = "test" } = {}){
             })
 
             this.put("/users/:userId", (schema, request) => {
+                console.log(request)
                 const userId = request.params.userId;
                 const content = JSON.parse(request.requestBody);
                 return schema.db.users.update(userId, content);

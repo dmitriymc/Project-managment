@@ -2,3 +2,48 @@
     width: 75%;
     margin: 0 auto;
 }
+
+.profile-container{
+    display: flex;
+
+    &__left {
+        position: relative;
+        width: 50%;
+    }
+
+    &__right {
+        padding: 25px;
+        width: 50%;
+    }
+
+    &__item {
+        margin-bottom: 15px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__input {
+        width: 100%;
+        text-align: left;
+    }
+
+    &__error {
+        display: flex;
+        text-align: center;
+        color: #ff8585;
+        font-weight: 100;
+        margin-top:5px;
+        padding: 5px;
+    }
+}
+
+.upload-avatar{
+    height: 100%!important;
+    min-height: 350px;
+
+    &__span{
+        padding-top: 0!important;
+    }
+}

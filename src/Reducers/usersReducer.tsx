@@ -31,7 +31,10 @@ export const usersReducer = (state = initialState, action: AppActions) => {
         case 'UPDATE_USER':
             return {...state}
         case 'UPDATE_USER_RECEIVED':
-            return {}
+            let index: number = state.users.findIndex(item => item.id === action.json.id);
+            let newArray = [...state.users];
+            newArray.splice(index, 1, action.json);
+            return {...state, users: newArray}
         default:
             return state
     }
